@@ -11,7 +11,7 @@ const Posts = ({handleBookmarkBtn}) => {
         .catch(err=> console.log(err, "error"))
     }, [])
     return (
-        <div className="w-2/3">
+        <div className="md:w-2/3 md:float-left">
             {
                 posts.map((post)=><Post handleBookmarkBtn={handleBookmarkBtn} key={post.id} post={post}></Post>)
             }
