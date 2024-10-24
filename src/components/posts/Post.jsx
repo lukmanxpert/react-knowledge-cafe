@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-const Post = ({ post, handleBookmarkBtn }) => {
+const Post = ({ post, handleBookmarkBtn, handleReadTime }) => {
     const { image_url, read_time, author_img, author_name, post_date, post_title, keyword} = post;
     return (
         <div className='pr-4 my-4'>
@@ -23,7 +23,7 @@ const Post = ({ post, handleBookmarkBtn }) => {
                 }
             </div>
             <div>
-                <a className='underline font-semibold text-xl text-purple-700' href="#">Mark as read</a>
+                <button className='underline font-semibold text-xl text-purple-700' onClick={()=>handleReadTime(read_time)}>Mark as read</button>
             </div>
             <hr className='my-8 border-2' />
         </div>
@@ -31,6 +31,7 @@ const Post = ({ post, handleBookmarkBtn }) => {
 };
 Post.propTypes = {
     post: PropTypes.object.isRequired,
-    handleBookmarkBtn: PropTypes.func
+    handleBookmarkBtn: PropTypes.func,
+    handleReadTime: PropTypes.func
 }
 export default Post;

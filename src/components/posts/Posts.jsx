@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useEffect } from "react";
 import { useState } from "react";
 import Post from "./Post";
-const Posts = ({handleBookmarkBtn}) => {
+const Posts = ({handleBookmarkBtn, handleReadTime}) => {
     const [posts, setPosts] = useState([]);
     useEffect(()=>{
         fetch('posts.json')
@@ -13,12 +13,13 @@ const Posts = ({handleBookmarkBtn}) => {
     return (
         <div className="md:w-2/3 md:float-left">
             {
-                posts.map((post)=><Post handleBookmarkBtn={handleBookmarkBtn} key={post.id} post={post}></Post>)
+                posts.map((post)=><Post handleReadTime={handleReadTime} handleBookmarkBtn={handleBookmarkBtn} key={post.id} post={post}></Post>)
             }
         </div>
     );
 };
 Posts.propTypes = {
-    handleBookmarkBtn: PropTypes.func
+    handleBookmarkBtn: PropTypes.func,
+    handleReadTime: PropTypes.func
 }
 export default Posts;
