@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-const Post = ({ post }) => {
+const Post = ({ post, handleBookmarkBtn }) => {
     const { image_url, read_time, author_img, author_name, post_date, post_title, keyword} = post;
     return (
         <div className='pr-4 my-4'>
@@ -13,7 +13,7 @@ const Post = ({ post }) => {
                     </div>
                 </div>
                 <div>
-                    <p>{read_time} read<span className='ml-2'><button><i className="fa-regular fa-bookmark"></i></button></span></p>
+                    <p>{read_time} read<span className='ml-2'><button onClick={()=> handleBookmarkBtn(post)}><i className="fa-regular fa-bookmark"></i></button></span></p>
                 </div>
             </div>
             <h1 className='font-bold text-4xl'>{post_title}</h1>
@@ -30,6 +30,7 @@ const Post = ({ post }) => {
     );
 };
 Post.propTypes = {
-    post: PropTypes.object.isRequired
+    post: PropTypes.object.isRequired,
+    handleBookmarkBtn: PropTypes.func
 }
 export default Post;

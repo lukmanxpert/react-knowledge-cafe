@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import { useEffect } from "react";
 import { useState } from "react";
 import Post from "./Post";
-const Posts = () => {
+const Posts = ({handleBookmarkBtn}) => {
     const [posts, setPosts] = useState([]);
     useEffect(()=>{
         fetch('posts.json')
@@ -12,10 +13,12 @@ const Posts = () => {
     return (
         <div className="w-2/3">
             {
-                posts.map((post)=><Post key={post.id} post={post}></Post>)
+                posts.map((post)=><Post handleBookmarkBtn={handleBookmarkBtn} key={post.id} post={post}></Post>)
             }
         </div>
     );
 };
-
+Posts.propTypes = {
+    handleBookmarkBtn: PropTypes.func
+}
 export default Posts;
